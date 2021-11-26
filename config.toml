@@ -1,0 +1,99 @@
+# default configuration
+baseURL = "http://examplesite.org"
+languageCode = "en-us"
+theme = "thomson-hugo"
+title = "Gabe Foley"
+summaryLength = "50"
+paginate = 4
+
+# css plugins
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+
+[[params.plugins.css]]
+link = "plugins/themify/css/themify-icons.css"
+
+[[params.plugins.css]]
+link = "plugins/owl-carousel/owl.carousel.min.css"
+
+[[params.plugins.css]]
+link = "plugins/owl-carousel/owl.theme.default.min.css"
+
+[[params.plugins.css]]
+link = "plugins/animated-text/animated-text.css"
+
+
+# js plugin
+[[params.plugins.js]]
+link = "plugins/jQuery/jquery.min.js"
+
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+
+[[params.plugins.js]]
+link = "plugins/owl-carousel/owl.carousel.min.js"
+
+[[params.plugins.js]]
+link = "plugins/shuffle/shuffle.min.js"
+
+[[params.plugins.js]]
+link = "plugins/animated-text/animated-text.js"
+
+[[params.plugins.js]]
+link = "plugins/google-map/gmap.js"
+
+
+# menu
+#[[menu.main]]
+#URL = "about"
+#name = "Contact"
+#weight = 2
+
+
+
+# default parameters
+[params]
+home = "Home"
+logo = "images/logo.png"
+# contact info
+mobile = "+880 2544 658 256"
+email = "g.foley (at) uq.edu.au"
+address = "125/A, CA Commercial Area, California, USA"
+# meta description
+author = "Gabe Foley"
+description = "This is meta description"
+# google analitycs
+google_analitycs_id = ""
+# contact form action 
+contact_form_action = "#" # contact form works with : https://formspree.io
+# copyright
+copyright = ""
+
+# preloader
+[params.preloader]
+enable = true
+preloader = "images/logo.png" # use png, jpg, svg or gif format
+
+# google map
+[params.gmap]
+enable = true
+gmap_api = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
+map_latitude = "51.5223477"
+map_longitude = "-0.1622023"
+map_marker = "images/marker.png"
+
+# social site
+
+
+[[params.social]]
+twicon = "ti-twitter-alt"
+twURL = "twitter.com/gabefoley"
+
+liicon = "ti-linkedin"
+liURL = "twitter.com/gabefoley"
+
+ghicon = "ti-github"
+ghURL = "twitter.com/gabefoley"
+
+gsicon = "ti-google"
+gsURL = "twitter.com/gabefoley"

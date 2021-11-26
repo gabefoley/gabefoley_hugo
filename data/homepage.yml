@@ -1,0 +1,51 @@
+####################### banner ########################
+banner:
+  enable : true
+  title : "Gabe Foley"
+  animated_text:
+    - "Bioinformatician."
+    - "Researcher."
+    - "Writer."
+  content : "<br><br> Postdoctoral researcher at University of Queensland. 
+  <br> My research involves the prediction and resurrection of proteins that existed millions of years ago. 
+  <br> My creative work involves the pursuit and resurrection of inner worlds that exist in dreams and memories."
+###################### Portfolio ######################
+portfolio:
+  enable : true
+
+###################### Service ########################
+service:
+  enable : false
+  title : "Core Services."
+  content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, totam ipsa quia hic
+          odit a sit laboriosam voluptatem in, blanditiis."
+  service_item:
+    # service item loop
+    - name : "Web Development"
+      icon : "ti-layout" #themify icon pack : https://themify.me/themify-icons
+      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum."
+
+    # service item loop
+    - name : "Digital Marketing"
+      icon : "ti-announcement" #themify icon pack : https://themify.me/themify-icons
+      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum."
+
+    # service item loop
+    - name : "Graphics Design"
+      icon : "ti-layers" #themify icon pack : https://themify.me/themify-icons
+      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum."
+
+    # service item loop
+    - name : "Branding Design"
+      icon : "ti-anchor" #themify icon pack : https://themify.me/themify-icons
+      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum."
+
+    # service item loop
+    - name : "Video Marketing"
+      icon : "ti-video-camera" #themify icon pack : https://themify.me/themify-icons
+      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum."
+
+    # service item loop
+    - name : "App Design"
+      icon : "ti-android" #themify icon pack : https://themify.me/themify-icons
+      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum."
