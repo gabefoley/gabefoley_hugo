@@ -1,5 +1,5 @@
 # default configuration
-baseURL = "http://examplesite.org"
+baseURL = "https://61b2ff74152712cc7fb4becc--awesome-ritchie-737370.netlify.app/"
 languageCode = "en-us"
 theme = "thomson-hugo"
 title = "Gabe Foley"
