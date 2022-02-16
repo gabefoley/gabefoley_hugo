@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121056552-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121056552-1');
+</script>
+
+    <meta charset="utf-8">
+    <title> SeqScrub</title>
+    <link rel="stylesheet" type="text/css" href="resources/styles/index.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="resources/styles/stylesheet.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="resources/styles/normalize.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="resources/styles/selectize.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="resources/img/favicon.ico">
+</head>
+<body>
+<header>
+    SeqScrub
+
+    <div class="document-group">
+
+
+        <input type="submit" class="docButton" value = "Read the documentation and FAQ" onclick="location.href='documentation.html'"> <br><br>
+
+
+    </div>
+</header>
+
+    <div class="loader" style = "display:none">
+        <img src=resources/img/scrubcrop.gif alt="Scrubbing image">
+        <div class="loader-text">
+        Cleaning sequences!</div>
+</div>
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <form id='data'>
+                <div class="form-group">
+
+                        Upload a FASTA file to edit all headers into the specified cleaned format. <br><br>
+
+                        <input required type="file" class="fileinput" id="file" name="file" />
+                        <label for="file" class="btn btn-primary"> Choose a file </label>
+
+                        <input type="text" id="fileToSave"  value="   " /> <br>
+
+                        <input type="file" class="fileinput" id="tree" name="tree" />
+                        <label for="tree" class="btn btn-primary"> Choose a tree (optional) </label>
+
+                        <input type="text" id="treeToSave"  value="   " /> <br>
+                        
+                        <label for="seqType">Type of sequence content:</label>
+                        <select class="form-control" id="seqType">
+                          <option value="1">Amino acids</option>
+                          <option value="2">Nucleotides</option>
+                        </select>
+                        <br>
+
+                        <input type="submit" class="submitButton" value = "Submit"> <br><br>
+            </div>
+
+        </form>
+        </div>
+        <div class="col-lg-6">
+
+            <label for="header-format"> Select header output format: (Click field to add and drag items to rearrange) </label>
+
+            <select name="header-format" id="header-format" multiple="multiple">
+                <option selected value="geneName"> Gene information</option>
+                <option selected value="speciesName">Species</option>
+                <option value="commonName"> Common name </option>
+                <option value="genus">Genus</option>
+
+                <option value="family">Family</option>
+                <option value="order">Order</option>
+                <option value="class">Class</option>
+                <option value="phylum">Phylum</option>
+                <option value="kingdom">Kingdom</option>
+                <option value="subgenus">Sub Genus</option>
+                <option value="supergenus">Super Genus</option>
+                <option value="subfamily">Sub Family</option>
+                <option value="superfamily">Super Family</option>
+                <option value="suborder">Sub Order</option>
+                <option value="superorder">Super Order</option>
+                <option value="subclass">Sub Class</option>
+                <option value="superclass">Super Class</option>
+                <option value="subphylum">Sub Phylum</option>
+                <option value="superphylum">Super Phylum</option>
+                <option value="subkingdom">Sub Kingdom</option>
+                <option value="superkingdom">Super Kingdom</option>
+
+
+            </select>
+
+            Curation options <br>
+
+
+            <input type="checkbox" checked id="checkObsolete" value=checked name="checkObsolete" class=obsoleteCheck>
+            <label for="checkObsolete"> Remove obsolete sequences </label> <br>
+
+            <input type="checkbox" checked id="removeUnclean" value=checked name="removeUnclean" class=dataCheck>
+            <label for="removeUnclean"> Remove un-mappable sequences</label> <br>
+
+            <label for="invalidChars" > Remove sequences containing: </label>
+            <input type="text" onClick="this.select();" id="invalidChars" value="B J O U X Z" /> <br>
+
+            <label for="invalidHeadChars" > Remove these characters from header: </label>
+            <input type="text" onClick="this.select();" id="invalidHeadChars" value=": , ; ( )"/> <br>
+
+
+            <input type="checkbox" id="replaceHeadersDBCheck" name="replaceHeadersDBCheck" class=headersDBCheck>
+            <label for="replaceHeadersDB" > Keep original headers - just remove characters from headers: </label>
+            
+            <input type="text" onClick="this.select();" id="replaceHeadersDB" value=": , ; ( )"/> <br>
+            <input type="checkbox" id="replaceCharsCheck" name="replaceCharsCheck" value=unchecked class="replaceCheck">
+
+            <label for="replaceChars" > Don't check databases - just remove characters from headers: </label>
+            <input type="text" onClick="this.select();" id="replaceChars" value=": , ; ( )" /> <br>
+
+            <input type="checkbox" checked id="getFirstID" value=checked name="getFirstID" class=dataCheck>
+            <label for="getFirstID"> Retain only the first ID from headers with multiple IDs </label> <br><br>
+
+
+
+
+
+            Formatting options <br>
+
+            <label for="stripUniProtID"> Format UniProt IDs like this - </label> 
+            <select id="stripUniProtID">
+              <option value=uniprotFormat1 >>tr|A0A1A8UQI7|A0A1A8UQI7_NOTFU </option>
+              <option value=uniprotFormat2 >>tr|A0A1A8UQI7 </option>
+              <option value=uniprotFormat3 >>A0A1A8UQI7 </option>
+            </select>
+
+            <br>
+
+            <label for="PDBFormat"> For PDB sequences - </label> 
+            <select id="PDBFormat">
+              <option value=PDBFormat1 >Keep the original header information and add annotations </option>
+              <option selected="selected" value=PDBFormat2 >Keep the original header information and don't add annotations </option>
+              <option value=PDBFormat3 >Remove the original header information and add annotations </option>
+              <option value=PDBFormat4 >Remove the original header information and don't add annotations </option>
+
+            </select>
+
+            <br>
+
+            <label for="idChar" > Add this character after ID </label>
+            <input type="text" onClick="this.select();" id="idChar" value=" " /> <br>
+
+            <label for="geneChar" > Use this character to split gene information: </label>
+            
+            <input type="text" onClick="this.select();" id="geneChar" value=" " /> <br>
+
+
+            <label for="speciesChar" > Use this character to split species name information: </label>
+            
+            <input type="text" onClick="this.select();" id="speciesChar" value=" " /> <br>
+
+            <label for="taxonChar" > Use this character to split taxonomic / common name: </label>
+            
+            <input type="text" onClick="this.select();" id="taxonChar" value=" " /> <br>
+
+
+
+
+
+            <input type="checkbox" id="addUnderscore" name="addUnderscore" class=dataCheck>
+
+            <label for="addUnderscore"> Change spaces to underscores in header </label> <br>
+
+            <input type="checkbox" checked id="addSquareBrackets" value=checked name="addSquareBrackets" class=dataCheck>
+
+            <label for="addSquareBrackets"> Add square brackets around species name </label> <br>
+
+            <input type="checkbox" checked id="removeSpeciesBrackets" value=checked name="removeSpeciesBrackets" class=dataCheck>
+
+            <label for="removeSpeciesBrackets"> Remove internal brackets in species name </label> <br>
+
+            <input type="checkbox" checked id="addQuotationMarks" value=checked name="addQuotationMarks" class=dataCheck>
+
+            <label for="addQuotationMarks"> If cleaning a tree and the new label contains whitespace, add quotation marks</label> <br>
+
+        </div>
+    </div>
+</div>
+
+
+
+<section class = output-container>
+    <label for = "cleanedSeqs" class="seqLabel1">Cleaned sequences: </label>
+    <label for = "badCharacters" class="seqLabel2">Sequences with illegal characters: </label>
+    <label for = "obsoleteSeqs" class="seqLabel3">Obsolete sequences: </label>
+    <label for = "badIds" class="seqLabel4">Un-mappable sequences: </label>
+</section>
+<section class = output-container>
+
+    <textarea readonly id = 'cleanedSeqs' spellcheck="false" autocomplete="off"></textarea>
+
+    <textarea readonly id = 'badCharacters' spellcheck="false" autocomplete="off"></textarea>
+
+    <textarea readonly id = 'obsoleteSeqs' spellcheck="false" autocomplete="off"></textarea>
+
+    <textarea readonly id = 'badIds' spellcheck="false" autocomplete="off"></textarea>
+</section>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <form id="save">
+                <div class="form-group">
+
+
+
+                    Which output fields should be saved? <br><br>
+
+                    <input type="checkbox" class="custom-checkbox"  id="selectAll" onchange="checkAll(this)" value="" name="selectAll">
+                    <label for="selectAll" id=selectAllLabel>Select all output</label> <br>
+
+                    <input type="checkbox" class="downloadCheck" id="cleanCheck" value="cleanedSeqs" name="cleanCheck" disabled>
+                    <label for="cleanCheck">Cleaned sequences</label> <br>
+                    
+                    <input type="checkbox" class="downloadCheck" id="illegalCheck" value="badCharacters" name="illegalCheck" disabled>
+                    <label for="illegalCheck"> Sequences with illegal characters </label> <br>
+                    
+                    <input type="checkbox" class="downloadCheck" id="obsoleteCheck" value="obsoleteSeqs" name="obsoleteCheck" disabled >
+                    <label for="obsoleteCheck"> Sequences that are obsolete </label> <br>
+                    
+                    <input type="checkbox" class="downloadCheck" id="unmappableCheck" value="badIds" name="unmappableCheck" disabled>
+                    <label for="unmappableCheck"> Sequences that couldn't be cleaned </label>    <br>
+                    
+                    <input type="checkbox" class="downloadCheck" id="treeCheck" value="treeDL" name="treeCheck" disabled>
+                    <label for="treeCheck"> Cleaned phylogenetic tree </label>    <br>
+
+                    <input type="checkbox" class="downloadCheck" id="csvCheck" value="csvDL" name="csvCheck" disabled>
+                    <label for="csvCheck"> Summary of changes made (.csv) </label>    <br>
+                    
+                    <input type="checkbox" class="downloadCheck" id="summaryCheck" value="summaryDL" name="summaryCheck" disabled>
+                    <label for="summaryCheck"> Summary of changes made (.txt)</label>    <br>
+
+   
+
+                    <br><br>
+
+                    <input type="submit" class="submitButton" value = "Save output"> <br><br>
+
+
+             <!--        <input type="button" class = "button" id= 'saveButton' value="Save output" onclick="downloadFile(fileToSave.value, cleanedSeqs.value)"> <br><br>
+   -->
+<!--                     <input type="button" class = "button" id= 'saveButton' value="Save summary" onclick="downloadSummary(fileToSave.value)"> -->
+                </div>
+            </form>
+        </div>
+
+        <div id=error-div class="col-lg-6">
+        </div>
+
+
+
+            
+<!--         <div class="col-lg-6">
+            <ul class="nav nav-tabs" id="myTab">
+                <li><a data-toggle="tab" href="#error-div">Errors        </a></li><br>
+                <li><a data-toggle="tab" href="#treeOutput">Phylogenetic tree</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="error-div"  class="tab-pane">
+                    <h3>Errors</h3>
+                    <p>Any errors or warnings will appear here.</p>
+                </div>
+                <div id="treeOutput" class="tab-pane ">
+                    <h3>Cleaned tree</h3>
+                    <p>If you select a phylogenetic tree to be cleaned the output will appear here.</p>
+                </div>
+            
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<script>
+    var beamer_config = {
+        selector : "element-id", //REPLACE: Your element Id to position the alert
+        product_id : "ZioqMcOM292", //DO NOT CHANGE: This is your product code on Beamer
+        //top: 0, /*Optional: Top position offset*/
+        //right: 0, /*Optional: Right position offset*/
+        //language: 'EN', /*Optional: Bring news in the language of choice*/
+        //filter: 'admin', /*Optional : Bring the news for a certain role as well as all the public news*/
+        //lazy: false, /*Optional : true if you want to manually start the script calling Beamer.init()*/
+        //alert : true, /*Optional : false if you don't want to initialize the selector*/
+        //callback : your_callback_function, /*Optional : Beamer will call this function, with the number of new features as a parameter, after the initialization*/
+        
+        //---------------Visitor Information---------------
+        //user_firstname : "firstname", /*Optional : input your user firstname for better statistics*/
+        //user_lastname : "lastname", /*Optional : input your user lastname for better statistics*/
+        //user_email : "email", /*Optional : input your user lastname for better statistics*/
+    };
+</script>
+<script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js"></script>
+                    
+    <!-- Jquery and Jquery UI -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Tether -->
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+
+
+    <!-- Bootstrap -->
+    <script src="./resources/js/bootstrap.min.js"></script>
+
+    <!-- JSZip -->
+    <script src="./resources/js/jszip.min.js"></script>
+
+    <!-- Selectize.js -->
+    <script src="./resources/js/selectize.min.js"></script>
+
+    <!-- FileSaver -->
+    <script src="./resources/js/filesaver.min.js"></script>
+
+    <!-- SeqScrub -->
+    <script src="./resources/js/seqscrub.js"></script>
+
+    <!--Download.js -->
+    <script src="http://danml.com/js/download.js"></script>
+
+</body>
+</html>

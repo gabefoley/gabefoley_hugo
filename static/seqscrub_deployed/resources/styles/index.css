@@ -1,0 +1,638 @@
+html,
+body,
+.page {
+  height: 100%;
+}
+
+label:before{
+	background-color: yellow;
+}
+
+input[type="text"]
+{
+    font-size:12px;
+}
+
+input[disabled]{
+  /*filter: invert(100%);*/
+}
+
+input[disabled] + label{
+  filter: invert(100%);
+}
+
+input[disabled][checked] {
+width:0px; height:0px;
+}
+input[disabled][checked]:after {
+ content:'\e013'; position:absolute; 
+ margin-top:-10px;
+ opacity: 1 !important;
+ margin-left:-5px;
+ font-family: 'Glyphicons Halflings';
+ font-style: normal;
+ font-weight: normal;
+}
+
+
+
+
+.cleanCheck input[type="checkbox"] + label::before
+{background-color: #990000;  border-color: #990000;}
+
+
+input[type="checkbox"] + label::before
+{background-color: #990000;  border-color: #990000;}
+
+
+ .container{
+ min-width:12400px;         
+ width: auto !important;   /* Firefox will set width as auto */
+ width:1200px;             /* As IE ignores !important it will set width as 1000px; */
+}
+
+#cleanedSeqs {
+	height: 300px;
+	width: 25%;
+	background: #2ecc71;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	word-break: : break-all;
+	font-size: 14px;
+	font-family: "Lucida Console", Monaco, monospace;
+	resize: none;
+
+
+
+}
+
+#cleanedSeqsHeader {
+	background: #2ecc71;
+}
+
+#badCharacters {
+	height: 300px;
+	width: 25%;
+	background: #3498db;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	font-size: 12px;
+	word-break: : break-all;
+	font-size: 14px;
+	font-family: "Lucida Console", Monaco, monospace;
+	resize: none;
+
+
+}
+
+#badCharactersHeader {
+	background: #3498db;
+}
+
+#badIds {
+	height: 300px;
+	width: 25%;
+	background: #9b59b6;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	font-size: 12px;
+	word-break: : break-all;
+	font-size: 14px;
+	font-family: "Lucida Console", Monaco, monospace;
+	resize: none;
+
+}
+
+#badIdsHeader{
+background: #9b59b6;
+
+}
+
+#error-div{
+	max-height: 400px;
+	overflow: scroll;
+	word-break:break-all;
+
+}
+
+#obsoleteSeqs {
+	height: 300px;
+	width: 25%;
+	background: goldenrod;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	font-size: 12px;
+	word-break: : break-all;
+	font-size: 14px;
+	font-family: "Lucida Console", Monaco, monospace;
+	resize: none;
+
+}
+
+#obsoleteHeader {
+	background: goldenrod;
+}
+
+.highlight
+{
+background-color:yellow;
+}
+
+
+body {
+	margin: 10px 0px 0 15px ;
+}
+
+.fileinput {
+	width: 0.3px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+.fileinput + label, .button, .submitButton , .docButton, .docButtonSmall{
+
+	background-color: #2ecc71;
+
+
+    
+
+    border: 1px solid #aaa;
+    color: black;
+
+    margin-bottom: 2px;
+    margin-right: 2px;
+    min-width: 240px;
+    /*padding: 3px 1px 3px 12px;*/
+    font-size: 16px;
+    /*text-shadow:2px 2px 0 rgba(0,0,0,0.1);*/
+    text-align: center;
+
+}
+
+.submitButton {
+
+	background-color: #3498db;
+	height: 50px;
+
+
+}
+
+.fileinput:focus + label{
+	background: #9b59b6;
+
+}
+
+
+
+
+.fileinput + label:hover, .submitButton:hover {
+	background: goldenrod;
+}
+
+.fileinput + label, .button {
+	cursor: pointer; /* "hand" cursor */
+}
+
+#saveButton {
+	background-color: #2ecc71;
+
+}
+
+
+
+.button  {
+	margin-right: 22%;
+}
+
+.button :hover {
+	background: goldenrod;
+
+}
+
+.button:focus {
+	background: #9b59b6;
+
+}
+
+
+#saveButton:hover {
+	background: goldenrod;
+
+}
+
+#saveButton:focus {
+	background: #9b59b6;
+
+}
+
+.docButton, .docButtonSmall {
+	background-color: goldenrod;
+	height: 90px;
+}
+
+.docButtonSmall {
+	height: 50px;
+}
+
+.docButton:hover, .docButtonSmall:hover {
+	background: #9b59b6;
+}
+
+#illegalButton {
+	background-color: #3498db;
+
+}
+
+
+#illegalButton:hover {
+	background: #9b59b6;
+
+}
+
+#illegalButton:focus {
+	background: #9b59b6;
+
+}
+
+#obsoleteButton {
+	background-color: goldenrod;
+
+}
+#obsoleteButton {
+	text-decoration-color: black;
+	text-shadow: 0px;
+}
+
+
+#obsoleteButton:hover {
+	background: #2ecc71;
+
+}
+
+#obsoleteButton:focus {
+	background: #9b59b6;
+
+}
+
+#unmappableButton {
+	background-color: #9b59b6;
+
+}
+
+
+#unmappableButton:hover {
+	background: #3498db;
+
+}
+
+#unmappableButton:focus {
+	background: #9b59b6;
+
+}
+
+
+#cleanedSeqsHeader, #badCharactersHeader, #badIdsHeader{
+	font-family: "Calibri";
+
+	font-size: 18px;
+	z-index: 999;
+	height:38px;
+	width: 33.3333%;
+	text-shadow:2px 2px 0 rgba(0,0,0,0.1);
+	padding: 0px 0px 0px 2px;
+
+}
+
+header {
+	font-size: 54px;
+	font-family: "Raleway";
+	text-shadow:2px 2px 0 rgba(0,0,0,0.1);
+	height: 70px;
+	margin-left:20px;
+
+}
+
+
+@font-face { 
+	font-family: 'Raleway'; 
+	src: url('Raleway-Medium.ttf'); 
+} 
+
+html { visibility:hidden; }
+
+
+.highlight {
+	background-color: #f1c40f;
+}
+
+.container {
+	z-index: 99;
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	border: 0px;
+	margin: 0px;
+	}
+
+/*.container label {
+	background-color: #2ecc71;
+	font-size: 20px;
+	font-family: "Calibri";
+	width:33.3333%;
+	min-height:100%;
+	flex: 2;
+	display:flex;
+	align-items:center;
+	margin: 0px;
+	padding: 10px 0px 0px 10px;
+}
+
+.container .seqLabel2 {
+	background-color: #3498db;
+
+
+}
+
+.container .seqLabel3 {
+	background-color: goldenrod;
+
+
+}
+
+.container .seqLabel4 {
+	background-color: #9b59b6;
+
+
+}
+
+textarea {
+	border: 0px;
+	margin: 0px;
+}
+
+textarea:focus {
+	outline-width: 0;
+}*/
+
+.output-container {
+	z-index: 99;
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	border: 0px;
+	margin: 0px;
+	}
+
+
+.output-container label {
+	background-color: #2ecc71;
+	font-size: 23px;
+	/*font-family: "Calibri";*/
+	width:33.3333%;
+	flex: 2;
+	display:flex;
+	align-items:center;
+	margin: 0px;
+	padding: 10px 0px 0px 10px;
+	color: black;
+	font-weight:bold;
+	/*text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 4px white;*/
+	font-family: "Raleway";
+
+}
+
+.output-container .seqLabel2 {
+	background-color: #3498db;
+
+
+}
+
+.output-container .seqLabel3 {
+	background-color: goldenrod;
+
+
+}
+
+.output-container .seqLabel4 {
+	background-color: #9b59b6;
+
+
+}
+
+textarea {
+	border: 0px;
+	margin: 0px;
+}
+
+textarea:focus {
+	outline-width: 0;
+}
+.loader {
+  position: fixed;
+  background: white;
+  /*left: 50%;*/
+  /*top: 40%;*/
+  z-index: 10000;
+/*  width: 100px;
+  height: 100px;*/
+  /*margin: -75px 0 0 -75px;*/
+  border: 16px solid #f3f3f3;
+  border-radius: 200%;
+  border-top: 16px solid #9b59b6;
+/*  border-left: 16px solid #2ecc71;
+  border-right: 16px solid #2ecc71;
+  border-bottom: 16px solid #9b59b6;*/
+  width: 100px;
+  height:100px;
+  top: calc(50vh - (/* height */300px / 2));
+  left: calc(50vw - (/* width */400px / 2));
+
+
+  width: 310px;
+  height: 310px;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+   -ms-animation: spin 2s linear infinite;
+    -o-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+.loader img {
+    display:block;
+    margin:auto;
+    margin-top:15%;
+
+    /*width: 70%;*/
+    /*height: 50%;*/
+}
+
+.loader-text {
+	    display:block;
+	    margin-top: 10%;
+	    margin-left: 20%;
+	    font-size: 20px;
+	    font-family: "Raleway";
+	    text-shadow:2px 2px 0 rgba(0,0,0,0.1);
+	    /*height: 70px;*/
+	    z-index: 999;
+
+	}
+
+
+	.tooltip {
+	    position: relative;
+	    display: inline-block;
+	    border-bottom: 1px dotted black;
+	}
+
+	.tooltip .tooltiptext {
+	    visibility: hidden;
+	    width: 320px;
+	    background-color: #2ecc71;
+	    color: black;
+	    margin: black;
+	    text-align: center;
+	    border-radius: 0px;
+	    border-color: black;
+	    padding: 5px 0;
+	    position: absolute;
+	    z-index: 1;
+	    top: -5px;
+	    left: 102%;
+	}
+
+	.tooltip .tooltiptext::after {
+	    content: "";
+	    border-color: black;
+	    position: absolute;
+	    top: 50%;
+	    right: 100%;
+	    margin-top: -5px;
+	    border-width: 5px;
+	    border-style: solid;
+	    border-color: transparent black transparent transparent;
+	}
+	.tooltip:hover .tooltiptext {
+	    visibility: visible;
+	}
+
+	.form {
+		font-size: 1px;
+	}
+
+
+
+	.dropdown {
+	  top:50%;
+	  transform: translateY(-50%);
+	}
+
+	a {
+	  color: #fff;
+	}
+
+	.dropdown dd,
+	.dropdown dt {
+	  margin: 0px;
+	  padding: 0px;
+	}
+
+	.dropdown ul {
+	  margin: -1px 0 0 0;
+	}
+
+	.dropdown dd {
+	  position: relative;
+	}
+
+	.dropdown a,
+	.dropdown a:visited {
+	  color: #fff;
+	  text-decoration: none;
+	  outline: none;
+	  font-size: 12px;
+	}
+
+	.dropdown dt a {
+	  background-color: #4F6877;
+	  display: block;
+	  padding: 8px 20px 5px 10px;
+	  min-height: 25px;
+	  line-height: 24px;
+	  overflow: hidden;
+	  border: 0;
+	  width: 272px;
+	}
+
+	.dropdown dt a span,
+	.multiSel span {
+	  cursor: pointer;
+	  display: inline-block;
+	  padding: 0 3px 2px 0;
+	}
+
+	.dropdown dd ul {
+	  background-color: #4F6877;
+	  border: 0;
+	  color: #fff;
+	  display: none;
+	  left: 0px;
+	  padding: 2px 15px 2px 5px;
+	  position: absolute;
+	  top: 2px;
+	  width: 280px;
+	  list-style: none;
+	  height: 100px;
+	  overflow: auto;
+	}
+
+	.dropdown span.value {
+	  display: none;
+	}
+
+	.dropdown dd ul li a {
+	  padding: 5px;
+	  display: block;
+	}
+
+	.dropdown dd ul li a:hover {
+	  background-color: #fff;
+	}
+
+	button {
+	  background-color: #6BBE92;
+	  width: 302px;
+	  border: 0;
+	  padding: 10px 0;
+	  margin: 5px 0;
+	  text-align: center;
+	  color: #fff;
+	  font-weight: bold;
+	}
+
+
+	.alert{
+	   position:relative;
+	}
+	.close{
+	  position:absolute;
+	  top:.0em;
+	  right:-5.6em;
+	  line-height:0;
+	}
+
+a {
+	padding: 23px;
+}
+
+
+.document-group {
+	float:right;
+	margin: 2px;
+}

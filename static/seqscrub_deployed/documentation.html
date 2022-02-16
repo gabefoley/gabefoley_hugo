@@ -1,0 +1,385 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title> SeqScrub Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="resources/styles/scribbler-global.css">
+    <link rel="stylesheet" href="resources/styles/scribbler-doc.css">
+    <link rel="author" href="humans.txt">
+  </head>
+  <body>
+    <div class="doc__bg"></div>
+    <nav class="header">
+      <h1 class="logo">SeqScrub</h1>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="https://github.com/gabefoley/seqscrub" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+        <li class="menu__item"><a href="index.html" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
+      </ul>
+    </nav>
+    <div class="wrapper">
+      <aside class="doc__nav">
+        <ul>
+          <li class="js-btn selected">Input options</li>
+          <li class="js-btn">Curation options</li>
+          <li class="js-btn">Formatting options</li>
+          <li class="js-btn">Output fields</li>
+          <li class="js-btn">Downloading options</li>
+          <li class="js-btn">Error messages</li>
+          <li class="js-btn">FAQ and troubleshooting</li>
+
+
+        </ul>
+      </aside>
+      <article class="doc__content">
+        <section class="js-section">
+          <h2 class="section__title">Input options</h2>
+          <p>SeqScrub is run by selecting the input files you wish to clean.</p>
+          <table id="customers">
+            <tr>
+              <th><h1>Options</h1></th>
+              <th><h1>Value</h1></th>
+              <th><h1>Required</h1></th>
+            </tr>
+            <tr>
+              <td>Choose a file</td>
+              <td>Select a sequence file in FASTA format to be cleaned.</td>
+              <td>Required</td>
+            </tr>
+            <tr>
+              <td>Choose a tree</td>
+              <td>Select a phylogenetic tree in Newick format to also clean. SeqScrub assumes that this tree has identical identifiers to the sequences in your input FASTA file. The only exception to this rule is that you can have a header with spaces in it, such as 'XP_014834532.1 PREDICTED aromatase-like [Poecilia mexicana]' and a Newick file that only contains the identifier - 'XP_014834532.1' and SeqScrub will still clean and annotate the file correctly.</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Type of sequence content</td>
+              <td>Select whether your sequences are amino acids or nucleotides</td>
+              <td>Required</td>
+            </tr>
+          </table>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h2 class="section__title">Curation options</h2>
+          <table id="customers">
+            <tr>
+              <th><h1>Options</h1></th>
+              <th><h1>Explanation</h1></th>
+              <th><h1>Default</h1></th>
+            </tr>
+            <tr>
+              <td>Select header output format</td>
+              <td>Select the type of information you would like annotated onto your headers. Extra taxonomic fields, including common name, can be added by clicking on the drop-down menu. The order of annotations can be rearranged by clicking and dragging any or the options to reorder them. </td>
+              <td>ID Gene_informaion and species</td>
+            </tr>
+            <tr>
+              <td>Remove obsolete sequences</td>
+              <td>If a sequence is marked as obsolete in either the NCBI or UniProt databases and this option is checked the sequence will be moved into the Obsolete sequences output field.</td>
+              <td>True</td>
+            </tr>
+            <tr>
+              <td>Remove un-mappable sequences</td>
+              <td>If a sequence is unable to be found in either the NCBI or UniProt databases and this option is checked the sequence will be moved into the Un-mappable sequences output field.</td>
+              <td>True</td>
+            </tr>
+            <tr>
+              <td>Remove sequences containing</td>
+              <td>If a sequence contains one of the single letters or groups of letters entered in this field, it will be moved into the Sequences with illegal characters. Letters or groups of letters should be separated by a single space. Note that this field is searching within the sequence itself for illegal characters, not within the header. </td>
+              <td>B J O U X Z</td>
+            </tr>
+            <tr>
+              <td>Remove these characters from header</td>
+              <td>Any of the letters entered into this field will be removed completely from any header. Letters or groups of letters should be separated by a single space. By default, SeqScrub suggests removing any characters which have special syntactic meaning within the Newick phylogenetic tree format, but this field can be updated to add or remove any letters. </td>
+              <td>: , ; ( )</td>
+            </tr>
+            <tr>
+              <td>Keep original headers - just remove characters from headers</td>
+              <td>Don't search for annotations in databases, just remove the specified letters or groups of letters from the headers. By default, SeqScrub suggests removing any characters which have special syntactic meaning within the Newick phylogenetic tree format. Note that this option still queries the NCBI and UniProt databases, so that un-mappable or obsolete sequences can still be identified.  </td>
+              <td>: , ; ( )</td>
+            </tr>
+            <tr>
+              <td>Don't check databases - just remove characters from headers</td>
+              <td>Don't search databases at all, just remove the specified letters or groups of letters from the headers. By default, SeqScrub suggests removing any characters which have special syntactic meaning within the Newick phylogenetic tree format. Note that this option does not query databases so it should be much faster, but un-mappable or obsolete sequences cannot be identified.</td>
+              <td>: , ; ( )</td>
+            </tr>
+            <tr>
+              <td>Retain only the first ID from headers with multiple IDs  </td>
+              <td>Sometimes headers will contain multiple identifiers within the same header. In these cases, SeqScrub's default behaviour is to just extract the first identifier. If this option is unchecked, any headers with multiple identifiers will be moved into the Un-mappable sequences output field. This allows these scenarios to be identified and dealt with on a case-by-case basis. </td>
+              <td>True</td>
+            </tr>
+          </table>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h2 class="section__title">Formatting options</h2>
+          <table id="customers">
+            <tr>
+              <th><h1>Options</h1></th>
+              <th><h1>Explanation</h1></th>
+              <th><h1>Default</h1></th>
+            </tr>
+            <tr>
+              <td>Format UniProt IDs like this</td>
+              <td>Select the way you would like SeqScrub to export UniProt headers. If a successful match is made to a UniProt entry, it can retrieve any or all of the information within the header and format it accordingly.</td>
+              <td>>tr|A0A1A8UQI7|A0A1A8UQI7_NOTFU</td>
+            </tr>
+            <tr>
+              <td>For PDB sequences</td>
+              <td>Sequences with PDB identifiers mapping to UniProt records can still be annotated. This command allows the user to suggest the exact way they would like PDB sequences formatted.</td>
+              <td>Keep the original header information and don't add annotations</td>
+            </tr>
+            <tr>
+              <td>Add this character after ID</td>
+              <td>In order to delineate identifiers from the other annotations added, you can specify a certain character which will always be added after the identifier. This would allow, for example, always adding a "%" sign so that you could easily split up the headers to remove this information at a later stage.</td>
+              <td>No character is added</td>
+            </tr>
+            <tr>
+              <td>Use this character to split gene information</td>
+              <td>Specifies a certain character to delineate the gene information added to any headers.</td>
+              <td>No character is added</td>
+            </tr>
+            <tr>
+              <td>Use this character to split species name information</td>
+              <td>Specifies a certain character to delineate the species name added to any headers.</td>
+              <td>No character is added</td>
+            </tr>
+            <tr>
+              <td>Use this character to split taxonomic / common name</td>
+              <td>Specifies a certain character to delineate the taxonomic / common name added to any headers.</td>
+              <td>No character is added</td>
+            </tr>
+            <tr>
+              <td>Change spaces to underscores in header  </td>
+              <td>Replace any spaces that occur in the final cleaned header with underscores. This is included as an option because many downstream programs will automatically split headers on their first whitespace, removing any annotations and possibly causing the alignment and tree file to contain non-identical identifiers. One way around this is to remove all white spaces, thus preserving all of the annotations in the header.</td>
+              <td>False</td>
+            </tr>
+            <tr>
+              <td>Add square brackets around species name   </td>
+              <td>Adds square brackets around any species name that is added to a header. Square brackets around species name is a generally accepted format for both NCBI and UniProt sequences.</td>
+              <td>True</td>
+            </tr>
+            <tr>
+              <td>Remove internal brackets in species name </td>
+              <td>Remove any brackets which appear in a species name that is added to a header. Brackets sometimes appear in species names that are retrieved from databases, but can cause issues with downstream analysis as brackets have special syntactic meaning in the Newick file format.</td>
+              <td>True</td>
+            </tr>
+
+            <tr>
+              <td>If cleaning a tree and the new label contains whitespace, add quotation marks</td>
+              <td>Because whitespace can cause problems in Newick files, SeqScrub can automatically wrap any sequences that would have whitespace added as a result of the cleaning and annotation with quotation marks. If a sequence is already wrapped in quotation marks in the original tree it retains them and does not add extra quotation marks.</td>
+              <td>True</td>
+            </tr>
+          </table>
+        </section>
+        <section class="js-section">
+          <h2 class="section__title">Output fields</h2>
+          <p>
+            <div class=output_item> Cleaned sequences </div>
+          </p>
+          <p>
+            Any sequences that are successfully able to be mapped to a database record and cleaned are exported to this output field. Even if not every taxonomic annotation could be found, if a match to the database was successfully made they will be placed in this output field, and any taxonomic fields that failed to be found will be indicated in the error output.
+          </p>
+          <p>
+            <div class=output_item> Sequences with illegal characters </div>
+            <p>
+              Any sequences that contain one of the characters or groups of characters listed in the 'Remove sequences containing' input field within their sequence will be placed in this output field. If you do not wish to remove any sequences on the basis of their sequence content, simply delete all of the input from the 'Remove sequences containing' input field.
+            </p>
+
+          <p>
+            <div class=output_item> Obsolete sequences </div>
+          </p>
+          <p>
+            Any sequences that are found to be marked as obsolete either by being deleted entirely or merged with another record will be placed in this output field. Databases are dynamic and sequences are constantly being updated and merged, so it is good to occasionally check datasets with SeqScrub to ensure you are using up-to-date data.
+          </p>
+          <p>
+            <div class=output_item> Un-mappable sequences </div>
+          </p>
+          <p>
+            Any sequences that fail to map to either the NCBI or UniProt database will be placed in this output field. This includes sequences with identifiers to completely different databases and identifiers that have been altered manually and unable to be mapped correctly to either NCBI or UniProt.
+          </p>
+          <p>
+            Being mapped to here is <em>not</em> a sign that a sequence is low-quality or should otherwise be removed from your analysis. It is simply an indication that it couldn't be mapped to NCBI or UniProt. While it might be appropriate to remove sequences or update them to the correct identifiers manually, it requires manual intervention and should not just be done automatically. For example, any sequences identified from a boutique or third-party database may end up in this field, despite being perfectly valid sequences.
+          </p>
+
+          <p>
+            As well as un-mappable sequences due to obscured or missing identifiers, sequences may end up here if there is a problem communicating with the database. If there are sequences that you expect should be in either NCBI or UniProt that end up in this output field, it may be worth running either the full dataset or just the un-mappable sequences through SeqScrub a second time, to confirm they are truly un-mappable.
+          </p>
+
+        </section>
+        <section class="js-section">
+          <h2 class="section__title">Downloading options</h2>
+          <p>Any or all of the four output fields can be downloaded, as well as the phylogenetic tree you may have chosen to optionally clean, and two summary files in either comma separated value (.csv) or text format (.txt).
+          </p>
+        </section>
+        <section class="js-section">
+          <h2 class="section__title">Error messages</h2>
+          <p>
+            <div class=error_item><h1> Couldn't find the gene information for these sequences. <br> Couldn't find the common name for these sequences. <br> Couldn't find the full taxonomic information for &lt taxonomic rank &gt for these sequences. </h1> </div>
+          </p>
+          <p>
+
+            These error messages occur when a particular annotation fails for a particular sequence. This is usually a result of these annotations not being present in the database for this record.
+          </p>
+          <p>
+            <div class=error_item><h1> Records are too large to write out to fields. Download file for full records</h1></div>
+            </p>
+            <p>
+            This error message appears to warn the user that copy and pasting content from the output fields will not capture every record, and they should instead use the download options and button to retrieve their cleaned files.
+          </p>
+          <p>
+            <div class=error_item><h1> There was a problem reading your file. Is it a FASTA file?</h1></div>
+            </p>
+            <p>
+            This error message occurs when SeqScrub is unable to parse the initial input file as a FASTA file. Check that your file meets the format requirements of a FASTA file.
+          </p>
+          <p>
+            <div class=error_item><h1> The original alignment and tree file don't match. &lt record name &gt is in the alignment but not in the tree. Check that you have a correctly formatted Newick file that matches your alignment.</h1></div>
+            </p>
+            <p>
+
+            If you want to update a phylogenetic tree file at the same time as an alignment file, they must have the same information in their headers initially. SeqScrub performs an initial check to enforce this condition, otherwise it is unable to clean a tree alongside an alignment file.
+          </p>
+          <p>
+            <div class=error_item><h1> "There was an error when trying to reach this URL: &lt url &gt</h1></div>
+            </p>
+            <p>
+
+            When connecting to external databases if SeqScrub runs into an error it will output the url it is trying to reach and failing on. Sometimes clicking on these links can provide information as to why SeqScrub is failing to connect to it.
+          </p>
+          <p>
+            <div class=error_item><h1> Error: There was a problem reading the XML records</h1></div>
+            </p>
+            <p>
+
+            This error occurs when SeqScrub can successfully connect to records in a database but has an issue with trying to parse the resulting XML file. If this error occurs, try running SeqScrub again and if it persists on what you believe to be files that should be able to be mapped please contact the developers with the files that generate this error message.
+
+          </p>
+          <p>
+            <div class=error_item><h1> You requested a phylogenetic tree but there is no cleaned tree available. <br> You requested a CSV but there is no CSV file generated. <br> You requested a summary but there is no summary generated.</h1></div>
+            </p>
+            <p>
+
+            These errors occur when files are requested that SeqScrub hasn't generated in its operations yet. They are unlikely to occur and generally fixable by re-running SeqScrub. If they persist on what you believe to be files that should be able to be mapped please contact the developers with the files that generate one of these error messages.
+
+          </p>
+
+          <p>
+            <div class=error_item><h1> There was a fatal error &lt number &gt sequences are being written to un-mappable <br> Please note: Currently not all sequences have been written to an output field <br> Please note: Despite the error, all sequences have still been written to an output field</h1></div>
+            </p>
+            <p>
+
+            These errors occur when files fail to map correctly to databases or connections fail to be made correctly to databases. The second error message indicates that the files are still processing and you should not download output yet. If SeqScrub stops displaying the loading graphic and the final error message does not indicate that all sequences have been written to an output field it means that there are sequences missing from the final output and you should re-run SeqScrub. If the messages persist on the same data, try reducing the number of sequences you are trying to run through SeqScrub.
+
+          </p>
+
+
+        </section>
+        <section class="js-section">
+          <h2 class="section__title">FAQ and troubleshooting</h2>
+          <p>
+            <div class=faq_item>
+                <h1> I have sequences that don't appear in NCBI or UniProt. Can SeqScrub still clean them? </h1>
+              </div>
+            </p>
+            <p>
+              At the moment SeqScrub only automatically maps to NCBI or UniProt. However, you can still make use of the automatic removal of sequences with certain characters and removal of characters from headers without checking the databases.
+            </p>
+          <p>
+            <div class=faq_item>
+              <h1> Why am I unable to retrieve taxonomic information for a certain sequence? </h1>
+            </div>
+          </p>
+          <p>
+            SeqScrub automatically retrieves this taxonomic information from the databases and sometimes the records are incomplete. SeqScrub will report in the error output which sequences have been unable to be annotated for each taxonomic rank.
+          </p>
+          <p>
+            <div class=faq_item>
+              <h1> Downloading on Windows causes the FASTA files to be incorrectly formatted. </h1>
+            </div>
+          </p>
+          <p>
+            Check that you are using an appropriate text editor for viewing your FASTA files. A program like Notepad will not automatically display the line breaks correctly - this is true of other online bioinformatic programs and not just SeqScrub. Our recommendation is to change to a different text editor. However, you can open the downloaded FASTA files in a program like WordPad on Windows and then just resave the file. This will allow for them to be opened in Notepad with the correct formatting.
+          </p>
+
+          
+          <p>
+            <div class=faq_item>
+              <h1> My sequences get sent to un-mappable, even when they should be discoverable in one of the databases</h1>
+            </div>
+          </p>
+          <p>
+            SeqScrub can occasionally run into issues connecting to the external databases. Our recommendation is to try the files again. If the problem persists, reducing the number of sequences per file may help.
+          </p>
+
+          <p>
+            <div class=faq_item>
+              <h1> How identical do my sequences in my alignment and phylogenetic tree need to be?</h1>
+            </div>
+          </p>
+          <p>
+            SeqScrub checks to see if headers are a match, but it allows for quotation marks to appear around the header information in the Newick tree (this is a common format added to allow for white spaces in Newick files). It also allows for sequences in the alignment to have whitespace such as 'XP_014834532.1 PREDICTED aromatase-like [Poecilia mexicana]' and a Newick file that only contains the identifier that occurs before the whitespace - 'XP_014834532.1'. Headers in the Newick file cannot add any extra information (besides quotation marks).
+          </p>
+
+          <p>
+            <div class=faq_item>
+              <h1> My sequences take a very long time to be cleaned </h1>
+            </div>
+          </p>
+          <p>
+            Occasionly SeqScrub can have issues with a database connection. We recommend simply refreshing the page and trying the files again. If the issue persists, try only running files with less than 1000 sequences through SeqScrub.
+          </p>
+
+
+
+          <p>
+
+            <div class=faq_item>
+              <h1> Not all of my sequences are present in my downloaded file. </h1>
+            </div>
+          </p>
+          <p>
+            SeqScrub will add a warning to the error output if we were unable to write out every file to a certain output field. In these cases, you may need to run SeqScrub again. If all files are sorted into an output field it will either not display an error or will display 'Please note: Despite the error, all sequences have still been written to an output field'.
+          </p>
+
+          <p>
+            If any output field displayed on the website gets more than 100 records sorted into it, SeqScrub will display the message 'Records are too large to write out to fields. Download file for full records'. In these cases, you cannot simply copy and paste from the online fields, but need to use the download button in order to retrieve the full records. 
+          </p>
+          <p>
+            Finally, note that you can download multiple FASTA files relating to the different output fields so, depending on your output, your sequences may be split across multiple files.
+          </p>
+
+            <div class=faq_item>
+              <h1> What is the difference between Keep original headers - just remove characters from headers and Don't check databases - just remove characters from headers? </h1>
+            </div>
+          </p>
+          <p>
+            Keep original headers doesn't add any annotations but it still searches in the databases so it can identify obsolete sequences but doesn't send anything to un-mappable. Don't check databases doesn't do any external mapping so it can't identify obsolete sequences or un-mappable sequences. Don't check databases will run much faster so if you are only using SeqScrub to remove characters from headers we recommend this option.
+          </p>
+            <div class=faq_item>
+              <h1> If I have an obsolete sequence with an illegal character and both 'Remove obsolete sequences' and 'Remove un-mappable sequences' are checked, which output field will it be sent to? </h1>
+            </div>
+          </p>
+          <p>
+            'Obsolete sequences' takes precedence over 'Sequences with illegal characters'.
+          </p>
+            <div class=faq_item>
+              <h1> How does SeqScrub handle GI numbers? </h1>
+            </div>
+          </p>
+          <p>
+            GI numbers are now obsolete and have been phased out in favour of accession numbers. To accomodate this, SeqScrub will automatically map any records with GI numbers to their accession number in NCBI. Thus, SeqScrub can also be used as a tool to automatically map lists of GI numbers to accession numbers.
+          </p>
+        </section>
+      </article>
+    </div>
+    <footer></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="resources/js/scribbler.js"></script>
+  </body>
+</html>
