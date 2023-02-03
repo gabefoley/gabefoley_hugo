@@ -6,7 +6,7 @@ year: "2019"
 language: "PHP"
 description: "This is meta description."
 category: "Research"
-project_url: "https://www.gabefoley.com/SeqScrub"
+project_url: "http://seqscrub.gabefoley.com"
 type: "portfolio"
 draft: false
 ---
@@ -25,4 +25,4 @@ SeqScrub is novel in that it doesn't search for information within the given hea
 Because of these external queries SeqScrub can also check if a record is obsolete.
 
 
-<a href="https://www.gabefoley.com/SeqScrub"> SeqScrub can be accessed here </a>
+<a href="http://seqscrub.gabefoley.com/"> SeqScrub can be accessed here </a>
